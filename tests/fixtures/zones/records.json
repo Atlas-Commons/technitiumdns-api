@@ -1,0 +1,30 @@
+{
+  "response": {
+    "zone": {"name": "example.com", "type": "Primary"},
+    "records": [
+      {
+        "name": "example.com",
+        "type": "SOA",
+        "ttl": 900,
+        "disabled": false,
+        "rData": {
+          "primaryNameServer": "ns1.example.com",
+          "responsiblePerson": "hostmaster.example.com",
+          "serial": 12,
+          "refresh": 3600,
+          "retry": 600,
+          "expire": 86400,
+          "minimum": 900
+        }
+      },
+      {
+        "name": "www.example.com",
+        "type": "A",
+        "ttl": 3600,
+        "disabled": false,
+        "rData": {"ipAddress": "203.0.113.1"}
+      }
+    ]
+  },
+  "status": "ok"
+}

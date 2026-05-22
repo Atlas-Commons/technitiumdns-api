@@ -1,0 +1,22 @@
+{
+  "response": {
+    "zones": [
+      {
+        "name": "example.com",
+        "type": "Primary",
+        "internal": false,
+        "dnssecStatus": "Unsigned",
+        "disabled": false,
+        "soaSerial": 12,
+        "lastModified": "2024-02-04T11:00:00.0000000Z"
+      },
+      {
+        "name": "internal.lan",
+        "type": "Primary",
+        "internal": true,
+        "disabled": false
+      }
+    ]
+  },
+  "status": "ok"
+}

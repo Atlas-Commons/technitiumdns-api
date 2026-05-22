@@ -1,0 +1,37 @@
+{
+  "response": {
+    "name": "Default",
+    "startingAddress": "192.168.1.1",
+    "endingAddress": "192.168.1.254",
+    "subnetMask": "255.255.255.0",
+    "leaseTimeDays": 7,
+    "leaseTimeHours": 0,
+    "leaseTimeMinutes": 0,
+    "domainName": "local",
+    "domainSearchList": ["home.arpa", "lan"],
+    "dnsUpdates": true,
+    "dnsOverwriteForDynamicLease": false,
+    "dnsTtl": 900,
+    "serverAddress": "192.168.1.1",
+    "routerAddress": "192.168.1.1",
+    "useThisDnsServer": false,
+    "dnsServers": ["192.168.1.5"],
+    "winsServers": ["192.168.1.5"],
+    "ntpServers": ["192.168.1.5"],
+    "staticRoutes": [
+      {"destination": "172.16.0.0", "subnetMask": "255.255.255.0", "router": "192.168.1.2"}
+    ],
+    "vendorInfo": [],
+    "capwapAcIpAddresses": ["192.168.1.2"],
+    "tftpServerAddresses": ["192.168.1.5", "192.168.1.6"],
+    "genericOptions": [{"code": 150, "value": "C0:A8:01:01"}],
+    "exclusions": [{"startingAddress": "192.168.1.1", "endingAddress": "192.168.1.10"}],
+    "reservedLeases": [
+      {"hostName": null, "hardwareAddress": "00-00-00-00-00-00", "address": "192.168.1.10", "comments": "comments"}
+    ],
+    "allowOnlyReservedLeases": false,
+    "blockLocallyAdministeredMacAddresses": true,
+    "ignoreClientIdentifierOption": true
+  },
+  "status": "ok"
+}

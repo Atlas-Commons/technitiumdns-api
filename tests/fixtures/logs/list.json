@@ -1,0 +1,9 @@
+{
+  "response": {
+    "logFiles": [
+      {"fileName": "2020-09-19", "size": "8.14 KB"},
+      {"fileName": "2020-09-15", "size": "5.6 KB"}
+    ]
+  },
+  "status": "ok"
+}

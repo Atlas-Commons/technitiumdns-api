@@ -1,0 +1,21 @@
+{
+  "response": {
+    "uptimestamp": "2026-04-19T12:14:07.6191241Z",
+    "uptimeSeconds": 9,
+    "lifetimeCounters": {
+      "totalQueries": 1234,
+      "totalNoError": 1100,
+      "totalServerFailure": 1,
+      "totalNxDomain": 100,
+      "totalRefused": 0,
+      "totalAuthoritative": 60,
+      "totalRecursive": 400,
+      "totalCached": 600,
+      "totalBlocked": 70,
+      "totalDropped": 4,
+      "totalClients": 8
+    }
+  },
+  "server": "server1",
+  "status": "ok"
+}

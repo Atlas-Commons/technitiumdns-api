@@ -1,0 +1,39 @@
+{
+  "response": {
+    "apps": [
+      {
+        "name": "Query Logs (Sqlite)",
+        "version": "5.0",
+        "dnsApps": [
+          {
+            "classPath": "QueryLogsSqlite.App",
+            "description": "Logs all incoming DNS requests and their responses in a Sqlite database",
+            "isAppRecordRequestHandler": false,
+            "isRequestController": false,
+            "isAuthoritativeRequestHandler": false,
+            "isRequestBlockingHandler": false,
+            "isQueryLogger": true,
+            "isQueryLogsDataSource": true
+          }
+        ]
+      },
+      {
+        "name": "Advanced Blocking",
+        "version": "8.0",
+        "dnsApps": [
+          {
+            "classPath": "AdvancedBlocking.App",
+            "description": "Allows blocking based on policies",
+            "isAppRecordRequestHandler": false,
+            "isRequestController": true,
+            "isAuthoritativeRequestHandler": false,
+            "isRequestBlockingHandler": true,
+            "isQueryLogger": false,
+            "isQueryLogsDataSource": false
+          }
+        ]
+      }
+    ]
+  },
+  "status": "ok"
+}

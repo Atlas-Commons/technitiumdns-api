@@ -1,0 +1,28 @@
+{
+  "displayName": "Administrator",
+  "username": "admin",
+  "isSsoUser": false,
+  "totpEnabled": false,
+  "token": "932b2a3495852c15af01598f62563ae534460388b6a370bfbbb8bb6094b698e9",
+  "info": {
+    "version": "15.0",
+    "dnsServerDomain": "server1",
+    "defaultRecordTtl": 3600,
+    "defaultNsRecordTtl": 14400,
+    "defaultSoaRecordTtl": 900,
+    "permissions": {
+      "Dashboard": {"canView": true, "canModify": true, "canDelete": true},
+      "Zones": {"canView": true, "canModify": true, "canDelete": false},
+      "Cache": {"canView": true, "canModify": false, "canDelete": false},
+      "Allowed": {"canView": true, "canModify": true, "canDelete": true},
+      "Blocked": {"canView": true, "canModify": true, "canDelete": true},
+      "Apps": {"canView": true, "canModify": true, "canDelete": true},
+      "DnsClient": {"canView": true, "canModify": true, "canDelete": true},
+      "Settings": {"canView": true, "canModify": true, "canDelete": true},
+      "DhcpServer": {"canView": true, "canModify": true, "canDelete": true},
+      "Administration": {"canView": true, "canModify": true, "canDelete": true},
+      "Logs": {"canView": true, "canModify": true, "canDelete": true}
+    }
+  },
+  "status": "ok"
+}

@@ -1,0 +1,10 @@
+{
+  "response": {
+    "topClients": [
+      {"name": "192.168.10.5", "domain": "server1.local", "hits": 236, "rateLimited": false},
+      {"name": "192.168.10.4", "domain": "nas1.local", "hits": 16, "rateLimited": false},
+      {"name": "192.168.10.6", "domain": "server2.local", "hits": 14, "rateLimited": false}
+    ]
+  },
+  "status": "ok"
+}

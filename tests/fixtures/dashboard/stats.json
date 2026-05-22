@@ -1,0 +1,40 @@
+{
+  "response": {
+    "stats": {
+      "totalQueries": 925,
+      "totalNoError": 834,
+      "totalServerFailure": 1,
+      "totalNxDomain": 90,
+      "totalRefused": 0,
+      "totalAuthoritative": 47,
+      "totalRecursive": 348,
+      "totalCached": 481,
+      "totalBlocked": 49,
+      "totalDropped": 0,
+      "totalClients": 6,
+      "zones": 19,
+      "cachedEntries": 6330,
+      "allowedZones": 10,
+      "blockedZones": 1,
+      "allowListZones": 0,
+      "blockListZones": 307447
+    },
+    "mainChartData": {
+      "labelFormat": "HH:mm",
+      "labels": ["2024-02-04T10:38:00.0000000Z", "2024-02-04T10:39:00.0000000Z"],
+      "datasets": []
+    },
+    "topClients": [
+      {"name": "192.168.10.5", "domain": "server1.local", "hits": 236, "rateLimited": false},
+      {"name": "192.168.10.4", "domain": "nas1.local", "hits": 16, "rateLimited": false}
+    ],
+    "topDomains": [
+      {"name": "google.com", "hits": 50},
+      {"name": "github.com", "hits": 30}
+    ],
+    "topBlockedDomains": [
+      {"name": "ads.example.com", "hits": 5}
+    ]
+  },
+  "status": "ok"
+}

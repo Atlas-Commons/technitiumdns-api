@@ -1,0 +1,35 @@
+{
+  "response": {
+    "pageNumber": 1,
+    "totalPages": 2,
+    "totalEntries": 13,
+    "entries": [
+      {
+        "rowNumber": 1,
+        "timestamp": "2021-09-10T12:22:52Z",
+        "clientIpAddress": "127.0.0.1",
+        "protocol": "Udp",
+        "responseType": "Recursive",
+        "responseRtt": 33.45,
+        "rcode": "NoError",
+        "qname": "google.com",
+        "qtype": "A",
+        "qclass": "IN",
+        "answer": "172.217.166.46"
+      },
+      {
+        "rowNumber": 2,
+        "timestamp": "2021-09-10T12:37:02Z",
+        "clientIpAddress": "127.0.0.1",
+        "protocol": "Udp",
+        "responseType": "Blocked",
+        "rcode": "NxDomain",
+        "qname": "example.com",
+        "qtype": "A",
+        "qclass": "IN",
+        "answer": ""
+      }
+    ]
+  },
+  "status": "ok"
+}

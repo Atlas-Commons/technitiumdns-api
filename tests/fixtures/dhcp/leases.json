@@ -1,0 +1,29 @@
+{
+  "response": {
+    "leases": [
+      {
+        "scope": "Default",
+        "type": "Reserved",
+        "hardwareAddress": "00-11-22-33-44-55",
+        "clientIdentifier": "1-001122334455",
+        "address": "192.168.1.5",
+        "hostName": "server1.local",
+        "addressStatus": "InUse",
+        "leaseObtained": "08/25/2020 17:52:51",
+        "leaseExpires": "09/26/2020 14:27:12"
+      },
+      {
+        "scope": "Default",
+        "type": "Dynamic",
+        "hardwareAddress": "aa:bb:cc:dd:ee:ff",
+        "clientIdentifier": "1-aabbccddeeff",
+        "address": "192.168.1.13",
+        "hostName": null,
+        "addressStatus": "InUse",
+        "leaseObtained": "06/15/2020 16:41:46",
+        "leaseExpires": "09/25/2020 12:39:54"
+      }
+    ]
+  },
+  "status": "ok"
+}

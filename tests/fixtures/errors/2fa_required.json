@@ -1,0 +1,4 @@
+{
+  "status": "2fa-required",
+  "errorMessage": "Please provide a TOTP code."
+}

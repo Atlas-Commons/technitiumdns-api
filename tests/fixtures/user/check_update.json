@@ -1,0 +1,13 @@
+{
+  "response": {
+    "updateAvailable": true,
+    "currentVersion": "14.0",
+    "updateVersion": "15.0",
+    "updateTitle": "New version available",
+    "updateMessage": "Please update to the latest version",
+    "downloadLink": "https://example.com/download",
+    "instructionsLink": "https://example.com/instructions",
+    "changeLogLink": "https://example.com/changelog"
+  },
+  "status": "ok"
+}

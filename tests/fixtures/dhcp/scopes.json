@@ -1,0 +1,16 @@
+{
+  "response": {
+    "scopes": [
+      {
+        "name": "Default",
+        "enabled": false,
+        "startingAddress": "192.168.1.1",
+        "endingAddress": "192.168.1.254",
+        "subnetMask": "255.255.255.0",
+        "networkAddress": "192.168.1.0",
+        "broadcastAddress": "192.168.1.255"
+      }
+    ]
+  },
+  "status": "ok"
+}

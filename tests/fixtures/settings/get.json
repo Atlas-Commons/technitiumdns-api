@@ -1,0 +1,32 @@
+{
+  "response": {
+    "version": "15.2",
+    "uptimestamp": "2026-05-09T10:28:36.3757654Z",
+    "clusterInitialized": false,
+    "dnsServerDomain": "server1",
+    "dnsServerLocalEndPoints": ["0.0.0.0:53", "[::]:53"],
+    "defaultRecordTtl": 3600,
+    "defaultNsRecordTtl": 14400,
+    "defaultSoaRecordTtl": 900,
+    "enableBlocking": true,
+    "blockingType": "NxDomain",
+    "blockListUrls": ["https://example.com/hosts"],
+    "blockListUpdateIntervalHours": 24,
+    "blockListNextUpdatedOn": "2024-02-01T20:15:08.658124Z",
+    "forwarders": ["192.168.10.7"],
+    "forwarderProtocol": "Udp",
+    "recursion": "AllowOnlyForPrivateNetworks",
+    "enableLogging": true,
+    "logQueries": false,
+    "tsigKeys": [
+      {"keyName": "home", "sharedSecret": "secret==", "algorithmName": "hmac-sha256"}
+    ],
+    "qpmPrefixLimitsIPv4": [
+      {"prefix": 32, "udpLimit": 600, "tcpLimit": 600},
+      {"prefix": 24, "udpLimit": 6000, "tcpLimit": 6000}
+    ],
+    "qpmPrefixLimitsIPv6": []
+  },
+  "server": "server1",
+  "status": "ok"
+}

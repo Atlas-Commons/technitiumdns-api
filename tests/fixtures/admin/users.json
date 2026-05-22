@@ -1,0 +1,17 @@
+{
+  "response": {
+    "users": [
+      {
+        "displayName": "Administrator",
+        "username": "admin",
+        "isSsoUser": false,
+        "disabled": false,
+        "previousSessionLoggedOn": "2022-09-17T13:20:32.7933783Z",
+        "previousSessionRemoteAddress": "127.0.0.1",
+        "recentSessionLoggedOn": "2022-09-17T13:22:45.671081Z",
+        "recentSessionRemoteAddress": "127.0.0.1"
+      }
+    ]
+  },
+  "status": "ok"
+}

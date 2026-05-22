@@ -1,0 +1,27 @@
+{
+  "response": {
+    "sessions": [
+      {
+        "username": "admin",
+        "isCurrentSession": true,
+        "partialToken": "272f4890427b9ab5",
+        "type": "Standard",
+        "tokenName": null,
+        "lastSeen": "2022-09-17T13:23:44.9972772Z",
+        "lastSeenRemoteAddress": "127.0.0.1",
+        "lastSeenUserAgent": "Mozilla/5.0"
+      },
+      {
+        "username": "admin",
+        "isCurrentSession": false,
+        "partialToken": "ddfaecb8e9325e77",
+        "type": "ApiToken",
+        "tokenName": "MyToken1",
+        "lastSeen": "2022-09-17T13:22:45.6710766Z",
+        "lastSeenRemoteAddress": "127.0.0.1",
+        "lastSeenUserAgent": "Mozilla/5.0"
+      }
+    ]
+  },
+  "status": "ok"
+}
