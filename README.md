@@ -1,12 +1,15 @@
 # technitiumdns-api
 
+[![CI](https://github.com/Atlas-Commons/technitiumdns-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Atlas-Commons/technitiumdns-api/actions/workflows/ci.yml)
 [![PyPI - Version](https://img.shields.io/pypi/v/technitiumdns-api?style=flat-square)](https://pypi.org/project/technitiumdns-api/)
 [![Python versions](https://img.shields.io/pypi/pyversions/technitiumdns-api?style=flat-square)](https://pypi.org/project/technitiumdns-api/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0)
 
+Contributions welcome — see [CONTRIBUTING.md](.github/CONTRIBUTING.md). PRs require DCO sign-off (`git commit -s`).
+
 Async + sync Python client for the [Technitium DNS Server HTTP API](https://github.com/TechnitiumSoftware/DnsServer/blob/master/APIDOCS.md).
 
-Built originally to power the [home-assistant-technitiumdns](https://github.com/Amateur-God/home-assistant-technitiumdns) integration, but works in any Python project.
+Built originally to power the [home-assistant-technitiumdns](https://github.com/Atlas-Commons/home-assistant-technitiumdns) integration, but works in any Python project.
 
 ## Features
 
@@ -195,7 +198,7 @@ twine check dist/*
 ## Versioning & license
 
 Released under [GPL-3.0-or-later](LICENSE) to match the
-[home-assistant-technitiumdns](https://github.com/Amateur-God/home-assistant-technitiumdns)
+[home-assistant-technitiumdns](https://github.com/Atlas-Commons/home-assistant-technitiumdns)
 integration. Follows [Semantic Versioning](https://semver.org/) once the
 1.0.0 stable line is published.
 

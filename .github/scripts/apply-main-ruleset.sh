@@ -8,10 +8,7 @@
 #
 # Usage:
 #   ./.github/scripts/apply-main-ruleset.sh
-#   ./.github/scripts/apply-main-ruleset.sh Amateur-God technitiumdns-api
-#
-# The ruleset requires the "Required checks" CI job to pass before merging
-# to main. Run this once after creating the GitHub repository.
+#   ./.github/scripts/apply-main-ruleset.sh Atlas-Commons Bot
 
 set -euo pipefail
 
@@ -40,7 +37,14 @@ fi
 
 echo "Applying ruleset to ${OWNER}/${REPO} ..."
 
-EXISTING="$(gh api "repos/${OWNER}/${REPO}/rulesets" --jq '.[] | select(.name=="Protect main") | .id' 2>/dev/null || true)"
+visibility="$(gh repo view "${OWNER}/${REPO}" --json visibility -q '.visibility' 2>/dev/null || echo unknown)"
+if [[ "${visibility}" == "PRIVATE" ]]; then
+  echo "Cannot apply repository rulesets to private repos without GitHub Team/Pro." >&2
+  echo "Configure branch protection manually: https://github.com/${OWNER}/${REPO}/settings/branches" >&2
+  exit 1
+fi
+
+EXISTING="$(gh api "repos/${OWNER}/${REPO}/rulesets" --jq '.[] | select(.name=="Protect main" or .name=="main") | .id' 2>/dev/null | head -1 || true)"
 
 if [[ -n "${EXISTING}" ]]; then
   echo "Updating existing ruleset id=${EXISTING} ..."
@@ -62,7 +66,5 @@ echo "  https://github.com/${OWNER}/${REPO}/settings/rules"
 echo ""
 echo "Notes:"
 echo "  - Merges to main require the 'Required checks' CI job (workflow: CI)."
-echo "  - Direct pushes to main are blocked; use pull requests."
-echo "  - Force-push and branch deletion on main are blocked."
-echo "  - The check name must exist before the ruleset can enforce it."
-echo "    Open one PR against main so CI runs at least once."
+echo "  - Install the DCO app: https://github.com/apps/dco"
+echo "  - Open one PR against main so CI runs before enforcing the ruleset."

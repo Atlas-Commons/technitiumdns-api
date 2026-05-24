@@ -9,7 +9,7 @@ readme = "README.md"
 license = { text = "GPL-3.0-or-later" }
 requires-python = ">=3.11"
 authors = [
-    { name = "Amateur-God", email = "stephen@atlastechsolutions.co.uk" },
+    { name = "Atlas-Commons", email = "stephen@atlastechsolutions.co.uk" },
 ]
 keywords = [
     "technitium",
@@ -55,11 +55,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Amateur-God/technitiumdns-api"
-Documentation = "https://github.com/Amateur-God/technitiumdns-api#readme"
-Repository = "https://github.com/Amateur-God/technitiumdns-api"
-Issues = "https://github.com/Amateur-God/technitiumdns-api/issues"
-Changelog = "https://github.com/Amateur-God/technitiumdns-api/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Atlas-Commons/technitiumdns-api"
+Documentation = "https://github.com/Atlas-Commons/technitiumdns-api#readme"
+Repository = "https://github.com/Atlas-Commons/technitiumdns-api"
+Issues = "https://github.com/Atlas-Commons/technitiumdns-api/issues"
+Changelog = "https://github.com/Atlas-Commons/technitiumdns-api/blob/main/CHANGELOG.md"
 "Technitium API Docs" = "https://github.com/TechnitiumSoftware/DnsServer/blob/master/APIDOCS.md"
 
 [tool.hatch.version]
