@@ -17,9 +17,12 @@ jobs:
   lint:
     name: Lint (ruff + mypy)
     runs-on: ubuntu-latest
-    container: python:3.12-bookworm
     steps:
       - uses: actions/checkout@v6
+      - uses: https://github.com/actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
       - name: Install dev dependencies
         run: |
           python -m pip install --upgrade pip
@@ -34,19 +37,16 @@ jobs:
   test:
     name: Test (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
-    container: ${{ matrix.container }}
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - python-version: "3.11"
-            container: python:3.11-bookworm
-          - python-version: "3.12"
-            container: python:3.12-bookworm
-          - python-version: "3.13"
-            container: python:3.13-bookworm
+        python-version: ["3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v6
+      - uses: https://github.com/actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
       - name: Install dev dependencies
         run: |
           python -m pip install --upgrade pip
@@ -57,10 +57,13 @@ jobs:
   build:
     name: Build sdist & wheel
     runs-on: ubuntu-latest
-    container: python:3.12-bookworm
     needs: [lint, test]
     steps:
       - uses: actions/checkout@v6
+      - uses: https://github.com/actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip build twine
@@ -85,7 +88,6 @@ jobs:
       - name: Verify DCO
         run: bash .github/scripts/verify-dco.sh
 
-  # Single status check required by the main branch ruleset.
   required:
     name: Required checks
     runs-on: ubuntu-latest
