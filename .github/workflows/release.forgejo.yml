@@ -1,5 +1,8 @@
 name: Release
 
+# Primary: validate + build on Forgejo. PyPI publish to public PyPI stays GitHub-only (OIDC).
+# Forgejo Packages: published from this workflow on tags.
+
 on:
   push:
     tags:
@@ -7,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 concurrency:
   group: release-forgejo-${{ github.ref }}
@@ -43,3 +47,8 @@ jobs:
         run: |
           $PYTHON -m build
           twine check dist/*
+      - name: Publish to Forgejo Packages
+        env:
+          FORGEJO_USERNAME: ${{ secrets.FORGEJO_USERNAME }}
+          FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+        run: bash scripts/ci/forgejo-packages.sh pypi "${{ github.repository_owner }}" technitiumdns-api
