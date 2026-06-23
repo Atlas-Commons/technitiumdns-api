@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-forgejo-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate release build
+    if: contains(github.server_url, 'git.atlastechsolutions.co.uk')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: https://github.com/actions/checkout@v4
+        with:
+          token: ${{ secrets.FORGEJO_TOKEN }}
+      - name: Setup Python
+        run: |
+          set -euo pipefail
+          export DEBIAN_FRONTEND=noninteractive
+          apt-get update -qq
+          apt-get install -y -qq python3 python3-venv python3-dev build-essential
+          python3 -m venv /tmp/ci-venv
+          echo "/tmp/ci-venv/bin" >> "$GITHUB_PATH"
+          echo "PYTHON=/tmp/ci-venv/bin/python" >> "$GITHUB_ENV"
+          echo "PIP=/tmp/ci-venv/bin/pip" >> "$GITHUB_ENV"
+      - name: Install dev dependencies
+        run: $PIP install -e ".[dev]"
+      - name: Run ruff
+        run: ruff check src tests
+      - name: Run pytest
+        run: pytest --cov=technitiumdns --cov-report=term
+      - name: Install build tools
+        run: $PIP install build twine
+      - name: Build and validate distributions
+        run: |
+          $PYTHON -m build
+          twine check dist/*

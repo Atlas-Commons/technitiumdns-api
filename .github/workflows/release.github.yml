@@ -1,8 +1,5 @@
 name: Release
 
-# Publishes to PyPI when you push a version tag (e.g. v0.1.0).
-# Pushing to main only runs ci.yml — tag a release to publish.
-
 on:
   push:
     tags:
@@ -12,17 +9,17 @@ permissions:
   contents: read
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release-github-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   quality:
     name: Lint and test
+    if: contains(github.server_url, 'github.com')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -41,12 +38,12 @@ jobs:
 
   build:
     name: Build distributions
+    if: contains(github.server_url, 'github.com')
     runs-on: ubuntu-latest
     needs: quality
     steps:
       - uses: actions/checkout@v6
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -57,14 +54,14 @@ jobs:
         run: python -m build
       - name: Validate distributions
         run: twine check dist/*
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v6
         with:
           name: dist
           path: dist/
 
   publish-pypi:
     name: Publish to PyPI
+    if: contains(github.server_url, 'github.com')
     runs-on: ubuntu-latest
     needs: build
     environment:
@@ -73,10 +70,8 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - name: Download built distributions
-        uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist/
-      - name: Publish to PyPI via trusted publishing
-        uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: pypa/gh-action-pypi-publish@release/v1
