@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: https://github.com/actions/checkout@v4
+        with:
+          token: ${{ secrets.FORGEJO_TOKEN }}
       - name: Setup Python
         run: |
           set -euo pipefail
@@ -43,6 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: https://github.com/actions/checkout@v4
+        with:
+          token: ${{ secrets.FORGEJO_TOKEN }}
       - name: Setup Python
         run: |
           set -euo pipefail
@@ -64,6 +68,8 @@ jobs:
     needs: [lint, test]
     steps:
       - uses: https://github.com/actions/checkout@v4
+        with:
+          token: ${{ secrets.FORGEJO_TOKEN }}
       - name: Setup Python
         run: |
           set -euo pipefail
@@ -94,6 +100,7 @@ jobs:
       - uses: https://github.com/actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.FORGEJO_TOKEN }}
       - name: Verify DCO
         run: bash .github/scripts/verify-dco.sh
 
