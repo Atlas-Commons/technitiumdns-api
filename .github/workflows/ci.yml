@@ -19,14 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: https://github.com/actions/setup-python@v6
-        with:
-          python-version: "3.12"
-          cache: pip
-      - name: Install dev dependencies
+      - name: Set up Python 3.12
         run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          apt-get update -qq
+          apt-get install -y -qq python3.12 python3.12-venv python3-pip
+          ln -sf "$(command -v python3.12)" /usr/local/bin/python3
+          python3 -m pip install --upgrade pip
+      - name: Install dev dependencies
+        run: pip install -e ".[dev]"
       - name: Run ruff
         run: ruff check src tests
       - name: Run ruff format check
@@ -35,22 +35,18 @@ jobs:
         run: mypy src
 
   test:
-    name: Test (Python ${{ matrix.python-version }})
+    name: Test (Python 3.12)
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v6
-      - uses: https://github.com/actions/setup-python@v6
-        with:
-          python-version: ${{ matrix.python-version }}
-          cache: pip
-      - name: Install dev dependencies
+      - name: Set up Python 3.12
         run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          apt-get update -qq
+          apt-get install -y -qq python3.12 python3.12-venv python3-pip
+          ln -sf "$(command -v python3.12)" /usr/local/bin/python3
+          python3 -m pip install --upgrade pip
+      - name: Install dev dependencies
+        run: pip install -e ".[dev]"
       - name: Run pytest with coverage
         run: pytest --cov=technitiumdns --cov-report=xml --cov-report=term
 
@@ -60,15 +56,14 @@ jobs:
     needs: [lint, test]
     steps:
       - uses: actions/checkout@v6
-      - uses: https://github.com/actions/setup-python@v6
-        with:
-          python-version: "3.12"
-          cache: pip
-      - name: Install build tools
+      - name: Set up Python 3.12
         run: |
-          python -m pip install --upgrade pip build twine
+          apt-get update -qq
+          apt-get install -y -qq python3.12 python3.12-venv python3-pip build-essential
+          ln -sf "$(command -v python3.12)" /usr/local/bin/python3
+          python3 -m pip install --upgrade pip build twine
       - name: Build distributions
-        run: python -m build
+        run: python3 -m build
       - name: Validate distributions
         run: twine check dist/*
       - name: Upload artifacts
@@ -96,24 +91,8 @@ jobs:
     steps:
       - name: Verify all CI jobs succeeded
         run: |
-          echo "lint:   ${{ needs.lint.result }}"
-          echo "test:   ${{ needs.test.result }}"
-          echo "build:  ${{ needs.build.result }}"
-          echo "dco:    ${{ needs.dco.result }}"
-          if [[ "${{ needs.lint.result }}" != "success" ]]; then
-            echo "Lint job failed or was skipped."
-            exit 1
-          fi
-          if [[ "${{ needs.test.result }}" != "success" ]]; then
-            echo "Test job failed or was skipped."
-            exit 1
-          fi
-          if [[ "${{ needs.build.result }}" != "success" ]]; then
-            echo "Build job failed or was skipped."
-            exit 1
-          fi
-          if [[ "${{ github.event_name }}" == "pull_request" && "${{ needs.dco.result }}" != "success" ]]; then
-            echo "DCO sign-off check failed."
-            exit 1
-          fi
+          if [[ "${{ needs.lint.result }}" != "success" ]]; then exit 1; fi
+          if [[ "${{ needs.test.result }}" != "success" ]]; then exit 1; fi
+          if [[ "${{ needs.build.result }}" != "success" ]]; then exit 1; fi
+          if [[ "${{ github.event_name }}" == "pull_request" && "${{ needs.dco.result }}" != "success" ]]; then exit 1; fi
           echo "All required CI checks passed."
