@@ -55,11 +55,18 @@ cmd_pypi() {
     pkg_name=$(ls "${dist_dir}"/*.tar.gz 2>/dev/null | head -1 | sed -E 's/.*\/([^-]+)-[^-]+\.tar\.gz/\1/')
   fi
   echo "Publishing PyPI package ${pkg_name} to ${owner}..."
-  twine upload \
+  local twine_log
+  twine_log=$(mktemp)
+  if twine upload \
     --repository-url "${API}/packages/${owner}/pypi" \
     -u "${FORGEJO_USERNAME}" -p "${FORGEJO_TOKEN}" \
-    --skip-existing \
-    "${dist_dir}"/*
+    "${dist_dir}"/* 2>&1 | tee "$twine_log"; then
+    :
+  elif grep -qiE 'already exists|409|duplicate|file exists' "$twine_log"; then
+    echo "PyPI package version already published; continuing"
+  else
+    exit 1
+  fi
   if [[ -n "$pkg_name" ]]; then
     cmd_link "$owner" "pypi" "$pkg_name" "$repo_name"
   fi
