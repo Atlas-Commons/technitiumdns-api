@@ -1,4 +1,4 @@
-name: Release
+name: Release (Forgejo)
 
 # Primary: validate + build on Forgejo. PyPI publish to public PyPI stays GitHub-only (OIDC).
 # Forgejo Packages: published from this workflow on tags.

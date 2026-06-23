@@ -1,4 +1,4 @@
-name: Live integration (manual)
+name: Live integration (GitHub)
 
 on:
   workflow_dispatch:
